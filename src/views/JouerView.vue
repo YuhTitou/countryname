@@ -10,11 +10,36 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'JouerView',
   props: {
     msg: String
-  }
+  },
+  data(){
+    return {
+        resPays:{
+            url:"",
+            name:""
+        },
+        pays:[],
+        res:[],
+        choixname:"",
+        count:0,
+    }
+  },
+  mounted() {
+    this.getAllCountry();
+  },
+  methods: {
+    getAllCountry(){
+      axios.get("https://restcountries.com/v3.1/all").then((response) => {
+        console.log(response.data)
+        this.pays=response.data
+      })
+    }
+  },
 }
 </script>
 
