@@ -3,6 +3,9 @@
         <h1>Quiz</h1>
         <h2>A quel pays appartient ce drapeau ?</h2>
 
+        <img :src="resPays.url">
+
+        <p>Réponse :{{resPays.name}}</p>
         <input placeholder="Votre Réponse">
 
         <button>Réponse</button>
@@ -14,9 +17,6 @@ import axios from 'axios'
 
 export default {
   name: 'JouerView',
-  props: {
-    msg: String
-  },
   data(){
     return {
         resPays:{
@@ -37,7 +37,16 @@ export default {
       axios.get("https://restcountries.com/v3.1/all").then((response) => {
         console.log(response.data)
         this.pays=response.data
-      })
+        this.Questions();
+      });
+      
+    },
+    Questions(){
+      let rd = Math.floor(Math.random()*1);
+      this.resPays.url = this.pays[rd]["flags"]["png"];
+      this.resPays.name = this.pays[rd]["translations"]["fra"]["common"];
+      console.log(this.resPays.url)
+      console.log(this.resPays.name)
     }
   },
 }
