@@ -1,15 +1,14 @@
 <template>
     <div class="jouer">
-        <p>les scores</p>
+        <h2>{{this.$store.state.tabj}}</h2>
+        <h2>{{this.$store.state.rep}}/10</h2>
     </div>
 </template>
 
 <script>
 export default {
   name: 'ScoreView',
-  props: {
-    msg: String
-  }
+  
 }
 </script>
 

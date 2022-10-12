@@ -3,15 +3,14 @@
         <h1>Quiz</h1>
         <h2>A quel pays appartient ce drapeau ?</h2>
 
-        <div v-if="this.count>9">
+        <div v-if="this.countQ>9">
           <p>Le jeu est fini</p>
-          <h2>Veux tu voir les scores ?</h2>
+          <h2>Quel est ton nom ?</h2>
+
+          <input v-model="namej" placeholder="Votre Nom">
 
           <router-link to="/score">
             <button>VOIR LES SCORES</button>
-          </router-link>
-          <router-link to="/">
-            <button>MENU</button>
           </router-link>
           
         </div>
@@ -41,6 +40,7 @@ export default {
         pays:[],
         res:[],
         rep:"",
+        namej:"",
         countQ:0,
         countRep:0,
     }
@@ -67,9 +67,14 @@ export default {
       if(this.resPays.name == this.rep){
         this.res.push(this.rep)
         console.log(this.res)
+        this.countRep++
       }
-      
       this.Questions();
+      this.rep="";
+
+      if(this.countQ>9){
+        this.$store.commit("setRep",this.countRep)
+      }
     }
   },
 }
