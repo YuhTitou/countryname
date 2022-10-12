@@ -3,12 +3,18 @@
         <h1>Quiz</h1>
         <h2>A quel pays appartient ce drapeau ?</h2>
 
-        <img :src="resPays.url">
+        <div v-if="this.count>9">
+          <p>Le jeu est fini</p>
+        </div>
 
-        <p>Réponse :{{resPays.name}}</p>
-        <input placeholder="Votre Réponse">
+        <div v-else>
+            <img :src="resPays.url">
 
-        <button>Réponse</button>
+            <p>Réponse : {{resPays.name}} </p>
+            <input placeholder="Votre Réponse">
+
+            <button v-on:click="next()">Réponse</button>
+        </div>
     </div>
 </template>
 
@@ -42,11 +48,16 @@ export default {
       
     },
     Questions(){
-      let rd = Math.floor(Math.random()*1);
+      let rd = Math.floor(Math.random()*250);
       this.resPays.url = this.pays[rd]["flags"]["png"];
       this.resPays.name = this.pays[rd]["translations"]["fra"]["common"];
-      console.log(this.resPays.url)
-      console.log(this.resPays.name)
+    },
+    next(){
+      this.count++
+
+      
+      this.Questions();
+
     }
   },
 }
@@ -76,4 +87,5 @@ button{
   font-size: larger;
   border-radius: 5px;
 }
+
 </style>
