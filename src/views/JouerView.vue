@@ -54,15 +54,11 @@ export default {
     },
     next(){
       this.count++
-
-      
       this.Questions();
-
     }
   },
 }
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
