@@ -5,13 +5,22 @@
 
         <div v-if="this.count>9">
           <p>Le jeu est fini</p>
+          <h2>Veux tu voir les scores ?</h2>
+
+          <router-link to="/score">
+            <button>VOIR LES SCORES</button>
+          </router-link>
+          <router-link to="/">
+            <button>MENU</button>
+          </router-link>
+          
         </div>
 
         <div v-else>
             <img :src="resPays.url">
 
             <p>Réponse : {{resPays.name}} </p>
-            <input placeholder="Votre Réponse">
+            <input v-model="rep" placeholder="Votre Réponse">
 
             <button v-on:click="next()">Réponse</button>
         </div>
@@ -31,8 +40,9 @@ export default {
         },
         pays:[],
         res:[],
-        choixname:"",
-        count:0,
+        rep:"",
+        countQ:0,
+        countRep:0,
     }
   },
   mounted() {
@@ -53,7 +63,12 @@ export default {
       this.resPays.name = this.pays[rd]["translations"]["fra"]["common"];
     },
     next(){
-      this.count++
+      this.countQ++
+      if(this.resPays.name == this.rep){
+        this.res.push(this.rep)
+        console.log(this.res)
+      }
+      
       this.Questions();
     }
   },
