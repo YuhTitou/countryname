@@ -1,5 +1,5 @@
 <template>
-    <div class="jouer">
+    <div class="score">
       <table>
         <tr>
           <th>Nom</th>
