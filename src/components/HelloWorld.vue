@@ -10,6 +10,9 @@
     <router-link to="/jouer">
       <button id="btnjouer">JOUER</button>
     </router-link>
+    <router-link to="/pays">
+      <button id="btnjouer">VOIR PAYS</button>
+    </router-link>
     <router-link to="/score">
       <button id="btnscore">SCORE</button>
     </router-link>

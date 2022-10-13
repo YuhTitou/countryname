@@ -1,7 +1,17 @@
 <template>
     <div class="jouer">
-        <h2>{{this.$store.state.tabj}}</h2>
-        <h2>{{this.$store.state.rep}}/10</h2>
+      <table>
+        <tr>
+          <th>Nom</th>
+          <th>Score</th>
+        </tr>
+        <div v-for="(nom,index) in this.$store.state.tabj" :key="index">
+            <tr>
+              <td>{{nom}}</td>
+              <td>{{this.$store.state.rep[index]}}</td>
+            </tr>
+        </div>
+      </table>
     </div>
 </template>
 
@@ -35,5 +45,16 @@ button{
   margin: 10px;
   font-size: larger;
   border-radius: 5px;
+}
+table, th, td {
+  border: 1px solid;
+  display: flex;
+  /* margin: 10px; */
+  padding: 10px;
+}
+div{
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 </style>

@@ -10,7 +10,7 @@
           <input v-model="namej" placeholder="Votre Nom">
 
           <router-link to="/score">
-            <button>VOIR LES SCORES</button>
+            <button v-on:click="getscore()">VOIR LES SCORES</button>
           </router-link>
           
         </div>
@@ -41,6 +41,7 @@ export default {
         res:[],
         rep:"",
         namej:"",
+        tabj:[],
         countQ:0,
         countRep:0,
     }
@@ -71,10 +72,42 @@ export default {
       }
       this.Questions();
       this.rep="";
+      
+    },
+    getscore(){
 
-      if(this.countQ>9){
-        this.$store.commit("setRep",this.countRep)
+      if(this.$store.state.rep == "" && this.$store.state.tabj == ""){
+        let resultc = []
+        let resultj = []
+
+        resultc.push(this.countRep)
+        resultj.push(this.namej)
+      
+
+        this.$store.commit("setRep",resultc)
+        this.$store.commit("setTabj",resultj)
+
+      }else{
+        let resultc = this.$store.state.rep
+        let resultj = this.$store.state.tabj
+
+
+        resultc.push(this.countRep)
+        resultj.push(this.namej)
+        
+
+        this.$store.commit("setRep",resultc)
+        this.$store.commit("setTabj",resultj)
       }
+
+
+      // this.countRep = ""
+      // this.namej=""
+    
+
+      // this.$store.commit("setRep",this.countRep)
+      // this.$store.commit("setTabj",this.namej)
+
     }
   },
 }
