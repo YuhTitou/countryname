@@ -8,7 +8,10 @@
             </tr>
             <tr v-for="(unpays,index) in this.resPays.name" :key="index">
                 <td>{{this.resPays.name[index]}}</td>
-                <td><img :src="this.resPays.url[index]"></td>
+                <router-link :to="{name : 'unpays', params : { id : index}}">
+                    <td><img :src="this.resPays.url[index]"></td>
+                </router-link>
+                
             </tr>
 
         </table>
@@ -46,7 +49,7 @@ export default {
                 console.log(this.resPays.name)
                 console.log(this.resPays.url)
             });
-        }
+        },
     }
 }
 </script>
