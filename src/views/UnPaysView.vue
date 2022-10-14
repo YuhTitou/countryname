@@ -40,8 +40,9 @@ export default {
                 this.resPays.url = this.pays[this.$route.params.id]["flags"]["png"];
                 this.resPays.name = this.pays[this.$route.params.id]["translations"]["fra"]["common"];
                 this.resPays.capital = this.pays[this.$route.params.id]["capital"][0]
-                this.resPays.originname = this.pays[this.$route.params.id]["name"]["nativeName"]["isl"]["common"]
                 this.resPays.pop = this.pays[this.$route.params.id]["population"]
+                this.resPays.originname = this.pays[this.$route.params.id]["name"]["nativeName"]["isl"]["common"]
+                
                     
                 // console.log(this.resPays.name)
                 // console.log(this.resPays.url)
